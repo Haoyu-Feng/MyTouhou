@@ -1,0 +1,50 @@
+#include "bullet.h"
+
+bullet::bullet()
+{
+}
+
+plane_bullet::plane_bullet(){
+    Health=0;
+}
+
+plane_bullet::plane_bullet(int x_,int y_){
+    pic.load(":/res/zhadan.png");
+    Width=pic.width();
+    Height=pic.height();
+    xspeed=0;
+    yspeed=-10;
+    x=x_;
+    y=y_-Height*0.5;
+    Health=(1<<22);//子弹默认不会被摧毁，只会在需要消失时变为0
+    attack=2;
+}
+
+void bullet::move(){
+    if(!exist()){
+        return;
+    }
+    x+=xspeed;
+    y+=yspeed;
+    if(xleft()<-Width||xright()>GM_WIDTH+Width||yup()<-Height||ydown()>GM_HEIGHT+Height){
+        Health=0;
+    }
+}
+
+enemy_bullet::enemy_bullet(){
+    Health=0;
+}
+
+enemy_bullet::enemy_bullet(int x_, int y_){
+    pic.load(":/res/yu.png");
+    Width=pic.width();
+    Height=pic.height();
+    xspeed=0;
+    yspeed=5;
+    x=x_;
+    y=y_+Height*0.5;
+    Health=0;//需要发射时再变
+    attack=2;
+}
+
+
