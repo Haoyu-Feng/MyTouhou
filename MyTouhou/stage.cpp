@@ -4,12 +4,12 @@ Stage::Stage(QWidget*parent):QWidget(parent){
     setAttribute(Qt::WA_DeleteOnClose,true);
     resize(GM_WIDTH,GM_HEIGHT);
     setAutoFillBackground(true);
-    yousei ys1=yousei(GM_WIDTH*0.5,100);
-    yousei ys2=yousei(GM_WIDTH*0.3,200);
-    yousei ys3=yousei(GM_WIDTH*0.7,200);
-    enemies.push_back(ys1);
+//    yousei ys1=yousei(GM_WIDTH*0.5,100);
+    yousei ys2=yousei(GM_WIDTH*0.3,100);
+//    yousei ys3=yousei(GM_WIDTH*0.7,200);
+//    enemies.push_back(ys1);
     enemies.push_back(ys2);
-    enemies.push_back(ys3);//debug,生成测试妖精
+//    enemies.push_back(ys3);//debug,生成测试妖精
     Timer.setInterval(10);
     Timer.start();
     connect(&Timer,&QTimer::timeout,[=](){updateAllPos();});//定时刷新
@@ -41,6 +41,7 @@ void Stage::updateAllPos(){
     }//自机射击
     for(auto it=enemies.begin();it!=enemies.end();++it){
         enemy &ys=*it;
+        ys.move();
         ys.shoot();
         for(int i=0;i<MAX_SHOOT;++i){
             enemy_bullet& eb=ys.e_b[i];

@@ -9,8 +9,8 @@ class Fly
 public:
     Fly();
     QPixmap pic;//贴图
-    int x;//中心
-    int y;//中心
+    qreal x;//中心
+    qreal y;//中心
     int xleft();
     int xright();
     int yup();

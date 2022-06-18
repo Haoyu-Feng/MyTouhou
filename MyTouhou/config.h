@@ -7,6 +7,6 @@
 #define ORI_LIVES 3
 #define ORI_CARDS 3
 #define PLANE_SPEED 20
-#define MAX_SHOOT 50
+#define MAX_SHOOT 80
 
 #endif // CONFIG_H

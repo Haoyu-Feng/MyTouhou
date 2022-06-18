@@ -14,6 +14,10 @@ public:
     int shoot_temp;
     int nowCD;
     int CD;
+    int duration;
+    int d;
+    void move();//暂时先以折线运动
+    void setDuration(int );
 };
 //妖精，敌人的一种
 //为了方便，暂定发射弹型与敌人种类绑定
