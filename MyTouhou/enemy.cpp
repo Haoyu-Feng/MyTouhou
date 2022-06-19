@@ -16,6 +16,8 @@ yousei::yousei(int x_,int y_){
     shoot_temp=0;
     CD=10;
     nowCD=-5;
+    duration=800;
+    d=0;
     for(int i=0;i<MAX_SHOOT;++i){
         e_b[i]=enemy_bullet(x,y);
     }
@@ -30,5 +32,27 @@ void yousei::enemy::shoot(){
     if(shoot_temp<MAX_SHOOT-1){
         e_b[shoot_temp++].Health=(1<<22);
     }
+}
+
+void yousei::enemy::move(){
+    d++;
+    if(d<duration/2){
+        x+=1.0;
+        y+=0.5;
+        for(int i=shoot_temp;i<MAX_SHOOT;++i){
+            e_b[i].x=x;e_b[i].y=y;
+        }
+    }
+    else if(d<=duration){
+        x+=1.0;
+        y-=0.5;
+        for(int i=shoot_temp;i<MAX_SHOOT;++i){
+            e_b[i].x=x;e_b[i].y=y;
+        }
+    }
+}
+
+void yousei::enemy::setDuration(int du){
+    duration=du;
 }
 
