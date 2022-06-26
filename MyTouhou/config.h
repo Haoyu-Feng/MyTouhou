@@ -13,8 +13,9 @@
 #define BUTTON_LIGHT "#ff7577"
 #define BUTTON_CNT 2
 #define LABEL_STYLE "QLabel{background:transparent;color:black;}"
-#define SCORE "   Score   %1"
+#define SCORE "   Score    %1"
 #define PLAYER "  Player   "
-#define POWER "  Power   %1.%2"
+#define POWER "  Power    %1.%2"
+#define DATA_STYLE "QLabel{background:transparent;color:black;}"
 
 #endif // CONFIG_H

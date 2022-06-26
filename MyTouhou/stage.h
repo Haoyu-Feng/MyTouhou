@@ -13,6 +13,7 @@
 #include<vector>
 #include<QLabel>
 #include<QVBoxLayout>
+#include<QDebug>
 
 class Stage:public QWidget{
     Q_OBJECT
@@ -31,6 +32,7 @@ public:
     bool meet(Plane &p, bullet &b);
     bool meet(plane_bullet &b,enemy &p);//判定碰撞
 
+private:
     //下面是得分、生命、火力的内容
 //    QLabel* HiScore;//历史最高的得分，暂时不考虑
     QLabel* Score;
@@ -38,6 +40,7 @@ public:
     QLabel* Power;
 //    int hi_score;
     int score;
+    QString player;
 };
 
 #endif // STAGE_H

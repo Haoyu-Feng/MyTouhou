@@ -12,7 +12,9 @@ Stage::Stage(QWidget*parent):QWidget(parent){
     enemies.push_back(ys2);
 //    enemies.push_back(ys3);//debug,生成测试妖精
 
-    QFont font("Algerian",16);
+    //侧边栏
+    score = 10;
+    QFont font("Bauhaus 93",20);//华文彩云,Bauhaus 93,华文琥珀
     Score = new QLabel(this);
     Player = new QLabel(this);
     Power = new QLabel(this);
@@ -22,12 +24,16 @@ Stage::Stage(QWidget*parent):QWidget(parent){
     Score->setStyleSheet(LABEL_STYLE);
     Player->setStyleSheet(LABEL_STYLE);
     Power->setStyleSheet(LABEL_STYLE);
-    QVBoxLayout* vlay = new QVBoxLayout;
-    vlay->addWidget(Score);
-    vlay->addWidget(Player);
-    vlay->addWidget(Power);
-    setLayout(vlay);
-    score = 0;
+    player = PLAYER;
+    for(int i=0;i<Myplane.Health;i++){
+        player+="★";
+    }
+    Score->setText(QString(SCORE).arg(score,9,10,QChar('0')));
+    Player->setText(player);
+    Power->setText(QString(POWER).arg(Myplane.Power/100).arg(Myplane.Power%100,2,10,QChar('0')));
+    Score->move(GM_WIDTH*0.7,GM_HEIGHT*0.1);
+    Player->move(GM_WIDTH*0.7,GM_HEIGHT*0.15);
+    Power->move(GM_WIDTH*0.7,GM_HEIGHT*0.2);
 
     Timer.setInterval(10);
     Timer.start();
@@ -51,7 +57,7 @@ void Stage::updateAllPos(){
             enemy& ys=*it;
             if(meet(pb,ys)){
                 ys.Health-=pb.attack;
-                if(ys.Health<0){
+                if(ys.Health<=0){
                     ys.Health=0;
                 }
                 pb.Health=0;
@@ -60,7 +66,7 @@ void Stage::updateAllPos(){
     }//自机射击
     for(auto it=enemies.begin();it!=enemies.end();++it){
         enemy &ys=*it;
-        ys.move1();
+        ys.move2();
         ys.shoot();
         for(int i=0;i<MAX_SHOOT;++i){
             enemy_bullet& eb=ys.e_b[i];
@@ -71,7 +77,8 @@ void Stage::updateAllPos(){
         }
     }//判断自机与敌人碰撞
 
-    QString player = PLAYER;
+    //侧边栏信息更新
+    player = PLAYER;
     for(int i=0;i<Myplane.Health;i++){
         player+="★";
     }
