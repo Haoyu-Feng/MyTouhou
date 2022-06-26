@@ -11,6 +11,8 @@
 #include<QKeyEvent>
 #include<QTimer>
 #include<vector>
+#include<QLabel>
+#include<QVBoxLayout>
 
 class Stage:public QWidget{
     Q_OBJECT
@@ -28,6 +30,14 @@ public:
     void initial();
     bool meet(Plane &p, bullet &b);
     bool meet(plane_bullet &b,enemy &p);//判定碰撞
+
+    //下面是得分、生命、火力的内容
+//    QLabel* HiScore;//历史最高的得分，暂时不考虑
+    QLabel* Score;
+    QLabel* Player;
+    QLabel* Power;
+//    int hi_score;
+    int score;
 };
 
 #endif // STAGE_H

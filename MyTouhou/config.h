@@ -8,5 +8,13 @@
 #define ORI_CARDS 3
 #define PLANE_SPEED 20
 #define MAX_SHOOT 80
+#define PI 3.1415926
+#define BUTTON_DARK "#966768"
+#define BUTTON_LIGHT "#ff7577"
+#define BUTTON_CNT 2
+#define LABEL_STYLE "QLabel{background:transparent;color:black;}"
+#define SCORE "   Score   %1"
+#define PLAYER "  Player   "
+#define POWER "  Power   %1.%2"
 
 #endif // CONFIG_H

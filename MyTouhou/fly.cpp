@@ -3,6 +3,7 @@
 Fly::Fly()
 {
     Health=0;
+    Power=0;
 }
 
 bool Fly::exist(){

@@ -2,14 +2,33 @@
 
 Stage::Stage(QWidget*parent):QWidget(parent){
     setAttribute(Qt::WA_DeleteOnClose,true);
+    this->grabKeyboard();
     resize(GM_WIDTH,GM_HEIGHT);
     setAutoFillBackground(true);
 //    yousei ys1=yousei(GM_WIDTH*0.5,100);
-    yousei ys2=yousei(GM_WIDTH*0.3,100);
+    yousei ys2=yousei(GM_WIDTH*0.7,100);
 //    yousei ys3=yousei(GM_WIDTH*0.7,200);
 //    enemies.push_back(ys1);
     enemies.push_back(ys2);
 //    enemies.push_back(ys3);//debug,生成测试妖精
+
+    QFont font("Algerian",16);
+    Score = new QLabel(this);
+    Player = new QLabel(this);
+    Power = new QLabel(this);
+    Score->setFont(font);
+    Player->setFont(font);
+    Power->setFont(font);
+    Score->setStyleSheet(LABEL_STYLE);
+    Player->setStyleSheet(LABEL_STYLE);
+    Power->setStyleSheet(LABEL_STYLE);
+    QVBoxLayout* vlay = new QVBoxLayout;
+    vlay->addWidget(Score);
+    vlay->addWidget(Player);
+    vlay->addWidget(Power);
+    setLayout(vlay);
+    score = 0;
+
     Timer.setInterval(10);
     Timer.start();
     connect(&Timer,&QTimer::timeout,[=](){updateAllPos();});//定时刷新
@@ -41,7 +60,7 @@ void Stage::updateAllPos(){
     }//自机射击
     for(auto it=enemies.begin();it!=enemies.end();++it){
         enemy &ys=*it;
-        ys.move();
+        ys.move1();
         ys.shoot();
         for(int i=0;i<MAX_SHOOT;++i){
             enemy_bullet& eb=ys.e_b[i];
@@ -51,6 +70,15 @@ void Stage::updateAllPos(){
             }
         }
     }//判断自机与敌人碰撞
+
+    QString player = PLAYER;
+    for(int i=0;i<Myplane.Health;i++){
+        player+="★";
+    }
+    Score->setText(QString(SCORE).arg(score,9,10,QChar('0')));
+    Player->setText(player);
+    Power->setText(QString(POWER).arg(Myplane.Power/100).arg(Myplane.Power%100,2,10,QChar('0')));
+
     update();
 }
 

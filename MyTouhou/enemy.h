@@ -16,8 +16,10 @@ public:
     int CD;
     int duration;
     int d;
+    qreal theta;//记录move1()中圆弧转过的角度
     void move();//暂时先以折线运动
-    void setDuration(int );
+    void move1();//一种弧线运动，从左开始
+    void move2();//同上，从右开始
 };
 //妖精，敌人的一种
 //为了方便，暂定发射弹型与敌人种类绑定

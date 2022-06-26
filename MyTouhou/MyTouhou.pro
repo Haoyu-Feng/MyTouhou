@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,7 +19,8 @@ SOURCES += main.cpp\
     movevector.cpp \
     bullet.cpp \
     enemy.cpp \
-    fly.cpp
+    fly.cpp \
+    mainwindow.cpp
 
 HEADERS  += \
     plane.h \
@@ -27,7 +29,8 @@ HEADERS  += \
     movevector.h \
     bullet.h \
     enemy.h \
-    fly.h
+    fly.h \
+    mainwindow.h
 
 RESOURCES += \
     res.qrc

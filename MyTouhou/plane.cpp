@@ -18,6 +18,7 @@ Plane::Plane(){
     card=ORI_CARDS;
     CD=10;
     nowCD=0;
+    Power=10;
 }
 
 void Plane::move(int dx,int dy){

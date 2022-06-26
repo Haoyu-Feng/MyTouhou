@@ -16,8 +16,9 @@ yousei::yousei(int x_,int y_){
     shoot_temp=0;
     CD=10;
     nowCD=-5;
-    duration=800;
+    duration=900;
     d=0;
+    theta=0;
     for(int i=0;i<MAX_SHOOT;++i){
         e_b[i]=enemy_bullet(x,y);
     }
@@ -29,6 +30,7 @@ void yousei::enemy::shoot(){
         return;
     }
     nowCD=0;
+    e_b[shoot_temp]=enemy_bullet(x,y);
     if(shoot_temp<MAX_SHOOT-1){
         e_b[shoot_temp++].Health=(1<<22);
     }
@@ -52,7 +54,40 @@ void yousei::enemy::move(){
     }
 }
 
-void yousei::enemy::setDuration(int du){
-    duration=du;
+void yousei::enemy::move1()
+{
+    const double v=1;
+    d++;
+    if(d<duration/3){
+        y+=0.8;
+        x+=0.1;
+    }
+    else if(d>=duration/3&&d<2*duration/3){
+        theta+=PI/(2*duration/3);
+        x+=v*sin(theta);
+        y+=v*cos(theta);
+    }
+    else{
+        x+=1.0;
+    }
 }
+
+void yousei::enemy::move2()
+{
+    const double v=1;
+    d++;
+    if(d<duration/3){
+        y+=0.8;
+        x-=0.1;
+    }
+    else if(d>=duration/3&&d<2*duration/3){
+        theta+=PI/(2*duration/3);
+        x-=v*sin(theta);
+        y+=v*cos(theta);
+    }
+    else{
+        x-=1.0;
+    }
+}
+
 

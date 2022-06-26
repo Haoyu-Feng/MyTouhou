@@ -18,6 +18,7 @@ public:
     int Width;//贴图宽
     int Height;//贴图高
     int Health;//生命值
+    int Power;
     bool exist();//存活，只与生命值有关
 };
 
