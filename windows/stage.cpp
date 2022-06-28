@@ -39,14 +39,14 @@ Stage::Stage(QWidget*parent):QWidget(parent){
        Score->setText(QString(SCORE).arg(score,9,10,QChar('0')));
        Player->setText(player);
        Powers->setText(QString(POWER).arg(Myplane.power/100).arg(Myplane.power%100,2,10,QChar('0')));
-       Score->move(GM_WIDTH*0.7,GM_HEIGHT*0.1);
-       Player->move(GM_WIDTH*0.7,GM_HEIGHT*0.15);
-       Powers->move(GM_WIDTH*0.7,GM_HEIGHT*0.2);
+       Score->move(GM_WIDTH*0.7,GM_HEIGHT*0.15);
+       Player->move(GM_WIDTH*0.7,GM_HEIGHT*0.2);
+       Powers->move(GM_WIDTH*0.7,GM_HEIGHT*0.25);
        Rank = new QLabel(this);
        Rank->setText(tr("难度"));//Gabriola
        Rank->setFont(QFont("Gabriola",20));
        Rank->setStyleSheet(LABEL_STYLE);
-       Rank->move(GM_WIDTH*0.75,80);
+       Rank->move(GM_WIDTH*0.75,130);
     //暂停界面、结束界面
        this->grabKeyboard();
        pw = new PauseWindow();
