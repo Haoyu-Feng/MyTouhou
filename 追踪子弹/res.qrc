@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/mi.png</file>
+        <file>res/Reimu_fast.png</file>
+        <file>res/Reimu_slow.png</file>
+        <file>res/yousei.png</file>
+        <file>res/yu.png</file>
+        <file>res/checkpoint_rm.png</file>
+        <file>res/zhadan.png</file>
+    </qresource>
+</RCC>
