@@ -41,6 +41,30 @@ void bullet::move1(){//S型曲线
     }
 }
 
+void bullet::moveleft(){//左边移动
+    if(!exist()){
+        return;
+    }
+    x-=2;
+    y+=yspeed;
+    if(xleft()<-Width||xright()>GM_WIDTH+Width||yup()<-Height||ydown()>GM_HEIGHT+Height){
+        Health=0;
+    }
+}
+
+void bullet::moveleft(){//右边移动
+    if(!exist()){
+        return;
+    }
+    x+=2;
+    y+=yspeed;
+    if(xleft()<-Width||xright()>GM_WIDTH+Width||yup()<-Height||ydown()>GM_HEIGHT+Height){
+        Health=0;
+    }
+}
+
+
+
 
 
 void enemy::move(){
