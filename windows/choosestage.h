@@ -12,6 +12,7 @@
 class ChooseStage : public QWidget
 {
     Q_OBJECT
+    QLabel *title;
     QLabel *StageButton[STAGE_CNT];
 public:
     explicit ChooseStage(QWidget *parent = 0);

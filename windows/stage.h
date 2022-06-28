@@ -38,6 +38,7 @@ public:
         QLabel* Score;//得分标签
         QLabel* Player;//剩余生命标签
         QLabel* Powers;//火力标签
+        QLabel* Rank;
     //    int hi_score;
         int score;
         QString player;
