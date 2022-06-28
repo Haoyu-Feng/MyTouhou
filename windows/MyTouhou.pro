@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     fly.cpp \
     mainwindow.cpp \
     pausewindow.cpp \
-    endwindow.cpp
+    endwindow.cpp \
+    choosestage.cpp \
+    chooseplane.cpp
 
 HEADERS  += \
     plane.h \
@@ -33,7 +35,9 @@ HEADERS  += \
     fly.h \
     mainwindow.h \
     pausewindow.h \
-    endwindow.h
+    endwindow.h \
+    choosestage.h \
+    chooseplane.h
 
 RESOURCES += \
     res.qrc

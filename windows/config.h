@@ -23,5 +23,6 @@
 #define SCORE "   Score    %1"
 #define PLAYER "  Player   "
 #define POWER "  Power    %1.%2" //侧边栏相关
+#define STAGE_CNT 2
 
 #endif // CONFIG_H

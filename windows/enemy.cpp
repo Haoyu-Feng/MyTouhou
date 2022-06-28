@@ -100,4 +100,3 @@ void yousei::enemy::move2()
         Health=0;
     }
 }
-

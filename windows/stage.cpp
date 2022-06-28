@@ -1,6 +1,7 @@
 #include<stage.h>
 #include<pausewindow.h>//.h里声明 .cpp里包含头文件
-#include<endwindow.h>
+#include<endwindow.h>//结束菜单
+extern int st,pl;
 
 Stage::Stage(QWidget*parent):QWidget(parent){
     setAttribute(Qt::WA_DeleteOnClose,true);
@@ -42,14 +43,10 @@ Stage::Stage(QWidget*parent):QWidget(parent){
        Score->move(GM_WIDTH*0.7,GM_HEIGHT*0.1);
        Player->move(GM_WIDTH*0.7,GM_HEIGHT*0.15);
        Powers->move(GM_WIDTH*0.7,GM_HEIGHT*0.2);
-    //暂停界面
+    //暂停界面、结束界面
        this->grabKeyboard();
        pw = new PauseWindow();
-       pw->show();
-       pw->hide();
        ew = new EndWindow();
-       ew->show();
-       ew->hide();
        connect(pw,&PauseWindow::ReturnPressed,this,&Stage::ReturnPress);
        connect(pw,&PauseWindow::QuitPressed,this,&Stage::QuitPress);
        connect(pw,&PauseWindow::RetryPressed,this,&Stage::close);
@@ -366,10 +363,13 @@ void Stage::ReturnPress(){
 
 void Stage::QuitPress(){
     pw->close();
+    ew->close();
     this->close();
 }
 
 void Stage::closeEvent(QCloseEvent *){
     pw->close();
+    ew->close();
     if(pw)delete pw;
+    if(ew)delete ew;
 }

@@ -24,24 +24,26 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
         PushButton[i]->hide();//不显示push button本身的文字，用painter绘制
     }
     now_button=0;//开始定位在 Game Start 上面
+    cs = new ChooseStage();
+    cp = new ChoosePlane();
+    connect(cs,&ChooseStage::chosen,this,&mainwindow::cs2cp);
+    connect(cp,&ChoosePlane::chosen,this,&mainwindow::StartGame);
+    connect(cp,&ChoosePlane::returned,this,&mainwindow::cp2cs);
+    connect(cs,&ChooseStage::returned,this,&mainwindow::cs2main);
     update();
 }
 
 void mainwindow::paintEvent(QPaintEvent *){
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
-
     QPen pen;
     pen.setWidth(3);
     pen.setColor(Qt::black);
     painter.setPen(pen);
-
     QLinearGradient linearGrad;
-
     QFont font;
     qreal x,y;
     QString str;
-
     for(int i=0;i<BUTTON_CNT;i++){
         QPainterPath textPath;
         str=PushButton[i]->text();
@@ -58,7 +60,6 @@ void mainwindow::paintEvent(QPaintEvent *){
         painter.setBrush(linearGrad);
         painter.drawPath(textPath);
     }
-
 }
 
 void mainwindow::keyPressEvent(QKeyEvent *ke){
@@ -100,11 +101,38 @@ void mainwindow::keyPressEvent(QKeyEvent *ke){
 }
 
 void mainwindow::GameStartPress(){
-    Stage *s = new Stage();
-    s->show();
-    this->close();
+    cs->show();
+    cs->grabKeyboard();
+    this->hide();
 }
 
 void mainwindow::QuitPress(){
+    this->close();
+}
+
+void mainwindow::cs2cp(){
+    cs->hide();
+    cp->grabKeyboard();
+    cp->show();
+}
+
+void mainwindow::cp2cs(){
+    cp->hide();
+    cs->grabKeyboard();
+    cs->show();
+}
+
+void mainwindow::cs2main(){
+    cs->hide();
+    this->grabKeyboard();
+    this->show();
+}
+
+void mainwindow::StartGame(){
+    //考虑cs->now_stage和cp->now_plane作为s的参数
+    Stage *s = new Stage();
+    s->show();
+    cs->close();
+    cp->close();
     this->close();
 }

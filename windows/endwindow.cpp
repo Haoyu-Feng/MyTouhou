@@ -2,6 +2,7 @@
 
 EndWindow::EndWindow(QWidget *parent) : QWidget(parent)
 {
+    //会区分胜利或失败
     resize(PE_WIDTH,PE_HEIGHT);
     move(GM_WIDTH/4,GM_HEIGHT/5);
     setWindowFlags(Qt::FramelessWindowHint|windowFlags());//消除边框
@@ -29,7 +30,7 @@ EndWindow::EndWindow(QWidget *parent) : QWidget(parent)
         }
         EndButton[i]->hide();
     }
-    now_button=0;
+    now_button=1;
     update();
 }
 
@@ -78,12 +79,14 @@ void EndWindow::keyPressEvent(QKeyEvent *ke){
             ke->accept();
             if(now_button>0){
                 now_button--;
+                update();
             }
             break;
         case Qt::Key_Down:
             ke->accept();
             if(now_button<END_BUTTON_CNT-1){
                 now_button++;
+                update();
             }
             break;
         case Qt::Key_Return:
@@ -91,13 +94,9 @@ void EndWindow::keyPressEvent(QKeyEvent *ke){
             switch(now_button){
                 case 0:
                     RetryPress();
-                    close();
-                    emit RetryPressed();
-                    break;
                     break;
                 case 1:
                     QuitPress();
-                    emit QuitPressed();
                     break;
                 default:break;
             }
@@ -105,20 +104,23 @@ void EndWindow::keyPressEvent(QKeyEvent *ke){
         case Qt::Key_Escape:
             ke->accept();
             now_button=1;
+            update();
             break;
         default:
             ke->ignore();
             break;
         }
-    update();
 }
 
 void EndWindow::RetryPress(){
     Stage *s = new Stage();
     s->show();
+    close();
+    emit RetryPressed();
 }
 
 void EndWindow::QuitPress(){
     mainwindow* w = new mainwindow();
     w->show();
+    emit QuitPressed();
 }
