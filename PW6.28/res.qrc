@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/Reimu_fast.png</file>
+        <file>res/Reimu_slow.png</file>
+        <file>res/yousei.png</file>
+        <file>res/checkpoint_rm.png</file>
+        <file>res/Reimu_assist.png</file>
+        <file>res/Reimu_main.png</file>
+        <file>res/power.png</file>
+        <file>res/green_laser.png</file>
+        <file>res/Marisa_assist.png</file>
+        <file>res/Marisa_main.png</file>
+        <file>res/checkpoint_mrs.png</file>
+        <file>res/Marisa_fast.png</file>
+        <file>res/title.png</file>
+        <file>res/st01a.png</file>
+        <file>res/title.wav</file>
+        <file>res/st1201.wav</file>
+        <file>res/flower_yousei.png</file>
+        <file>res/orange_tri.png</file>
+        <file>res/white_mi.png</file>
+        <file>res/blue_middle.png</file>
+        <file>res/blue_small.png</file>
+        <file>res/red_big.png</file>
+        <file>res/red_small.png</file>
+        <file>res/yellow_ellipse.png</file>
+        <file>res/yellow_star.png</file>
+        <file>res/green_sword.png</file>
+        <file>res/inyo.png</file>
+        <file>res/MAO.png</file>
+        <file>res/dark_butterfly.png</file>
+        <file>res/light_butterfly.png</file>
+        <file>res/mid_butterfly.png</file>
+    </qresource>
+</RCC>
