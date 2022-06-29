@@ -24,11 +24,11 @@ mainwindow::mainwindow(QWidget *parent) : QWidget(parent)
         PushButton[i]->move(800,50*(i+1));
         switch(i){
             case 0:
-                PushButton[i]->move(3*GM_WIDTH/5,GM_HEIGHT/4);
+                PushButton[i]->move(3*GM_WIDTH/5,GM_HEIGHT/3);
                 PushButton[i]->setText(tr("Game Start"));
                 break;
             case BUTTON_CNT-1:
-                PushButton[i]->move(3*GM_WIDTH/5+30,GM_HEIGHT/4+50);
+                PushButton[i]->move(3*GM_WIDTH/5,GM_HEIGHT/3+100);
                 PushButton[i]->setText(tr("Quit"));
                 break;
             default:break;
@@ -151,7 +151,7 @@ void mainwindow::cs2main(){
 
 void mainwindow::StartGame(){
     Stage *s = new Stage(cp->now_plane,cs->now_stage);
-    titlesound->stop();    
+    titlesound->stop();
     cs->close();
     cp->close();
     this->close();

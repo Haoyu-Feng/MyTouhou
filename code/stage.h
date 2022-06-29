@@ -60,7 +60,7 @@ public:
         PauseWindow* pw;//暂停界面
         EndWindow* ew;//结束界面
         void PausePress();//暂停
-        void closeEvent(QCloseEvent *);//重写closeEvent函数，实现关闭主窗口的同时也关闭暂停界面或结束界面
+//        void closeEvent(QCloseEvent *);//重写closeEvent函数，实现关闭主窗口的同时也关闭暂停界面或结束界面
 
 public slots:
     void ReturnPress();//接收PauseWindow::ReturnPressed()的槽函数，关闭暂停界面，继续游戏

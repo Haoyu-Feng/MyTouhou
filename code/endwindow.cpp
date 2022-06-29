@@ -3,7 +3,7 @@
 EndWindow::EndWindow(int my_plane_,int diff_,QWidget *parent) : QWidget(parent)
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
-    setWindowModality(Qt::WindowModal);
+    setWindowModality(Qt::ApplicationModal);
     endsound=new QSound(":/res/player_score.wav");
     my_plane=my_plane_;
     diff=diff_;
@@ -12,10 +12,10 @@ EndWindow::EndWindow(int my_plane_,int diff_,QWidget *parent) : QWidget(parent)
     setWindowFlags(Qt::FramelessWindowHint|windowFlags());//消除边框
     setAttribute(Qt::WA_TranslucentBackground);//背景透明
     setAttribute(Qt::WA_DeleteOnClose,true);//设置stage界面关闭时，该界面自动关闭
-    QFont font("华文中宋",20);//设置字体和大小
+    QFont font("华文中宋",30);//设置字体和大小
     EndLabel = new QLabel();
     EndLabel->setFont(font);
-    EndLabel->move(PE_WIDTH/5+30,PE_HEIGHT/4);
+    EndLabel->move(PE_WIDTH/5+50,PE_HEIGHT/4);
     EndLabel->setText(tr("满身疮痍"));
     EndLabel->hide();
     for(int i=0;i<END_BUTTON_CNT;i++){

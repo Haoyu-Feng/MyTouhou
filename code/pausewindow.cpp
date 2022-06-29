@@ -6,13 +6,14 @@ PauseWindow::PauseWindow(int my_plane_,int diff_,QWidget *parent) : QWidget(pare
     diff=diff_;
     resize(PE_WIDTH,PE_HEIGHT);
     move(GM_WIDTH/4,GM_HEIGHT/5);
-    setWindowFlags(Qt::FramelessWindowHint|windowFlags());//消除边框
+    setWindowFlags(Qt::FramelessWindowHint| Qt::Dialog);//消除边框
     setAttribute(Qt::WA_TranslucentBackground);//背景透明
     setAttribute(Qt::WA_DeleteOnClose,true);
-    QFont font("华文中宋",20);//设置字体和大小
+    setWindowModality(Qt::ApplicationModal);
+    QFont font("华文中宋",30);//设置字体和大小
     PauseLabel = new QLabel();
     PauseLabel->setFont(font);
-    PauseLabel->move(PE_WIDTH/5+30,PE_HEIGHT*0.35);
+    PauseLabel->move(PE_WIDTH/5+50,PE_HEIGHT*0.15);
     PauseLabel->setText(tr("游戏暂停"));
     PauseLabel->hide();
     for(int i=0;i<PAUSE_BUTTON_CNT;i++){
@@ -20,7 +21,7 @@ PauseWindow::PauseWindow(int my_plane_,int diff_,QWidget *parent) : QWidget(pare
         PauseButton[i]->setFont(font);
         switch(i){
             case 0:
-                PauseButton[i]->move(PE_WIDTH/5,PE_HEIGHT/4+120);
+                PauseButton[i]->move(PE_WIDTH/5,PE_HEIGHT/4+50);
                 PauseButton[i]->setText(tr("游戏暂停解除"));
                 break;
             case 1:
@@ -28,7 +29,7 @@ PauseWindow::PauseWindow(int my_plane_,int diff_,QWidget *parent) : QWidget(pare
                 PauseButton[i]->setText(tr("返回标题画面"));
                 break;
             case 2:
-                PauseButton[i]->move(PE_WIDTH/5,3*PE_HEIGHT/4-120);
+                PauseButton[i]->move(PE_WIDTH/5,3*PE_HEIGHT/4-50);
                 PauseButton[i]->setText(tr("从头开始游戏"));
                 break;
             default:break;

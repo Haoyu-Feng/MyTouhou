@@ -49,7 +49,7 @@ Stage::Stage(int my_plane,int diff_,QWidget*parent):QWidget(parent){
     music
     pixmap
     vector<enemies*>:考虑提前制作完毕若干固定关卡，并按顺序生成enemy&&bullet；或随机生成,rouge_like(尽量控制可玩性
-    */    
+    */
     this->grabKeyboard();
     if(my_plane==0){
         planenum=0;
@@ -93,8 +93,8 @@ Stage::Stage(int my_plane,int diff_,QWidget*parent):QWidget(parent){
     connect(&Timer,&QTimer::timeout,[=](){updateAllPos();});//定时刷新
     lifeleft=3;
     //侧->游戏界面边栏
-       score = 10;
-       QFont font("Bauhaus 93",20);//华文彩云,Bauhaus 93,华文琥珀
+       score = 0;
+       QFont font("Bauhaus 93",25);//华文彩云,Bauhaus 93,华文琥珀
        Score = new QLabel(this);
        Player = new QLabel(this);
        Powers = new QLabel(this);
@@ -111,10 +111,9 @@ Stage::Stage(int my_plane,int diff_,QWidget*parent):QWidget(parent){
        Score->setText(QString(SCORE).arg(score,9,10,QChar('0')));
        Player->setText(player);
        Powers->setText(QString(POWER).arg(Myplane->power/100).arg(Myplane->power%100,2,10,QChar('0')));
-       Score->move(GM_WIDTH*0.7,GM_HEIGHT*0.1);
-       Player->move(GM_WIDTH*0.7,GM_HEIGHT*0.15);
-       Powers->move(GM_WIDTH*0.7,GM_HEIGHT*0.2);
-
+       Score->move(GM_WIDTH*0.75,GM_HEIGHT*0.15);
+       Player->move(GM_WIDTH*0.75,GM_HEIGHT*0.2);
+       Powers->move(GM_WIDTH*0.75,GM_HEIGHT*0.25);
        this->grabKeyboard();
        pw = new PauseWindow(planenum,difficulty);
        ew = new EndWindow(planenum,difficulty);
@@ -370,6 +369,39 @@ void Stage::paintEvent(QPaintEvent *){
         }
     }
     //在的都画出来
+    //画难度标签
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    QLinearGradient linearGrad;
+    linearGrad.setColorAt(0,Qt::black);
+    QFont font = QFont("Arial",40);
+    int x=GM_WIDTH*0.8,y=GM_HEIGHT*0.1;
+    QString str;
+    QPen pen;
+    pen.setWidth(1);
+    switch(difficulty){
+    case 0:
+        pen.setColor(Qt::green);
+        str=QString(tr(" Easy "));
+        break;
+    case 1:
+        pen.setColor("#75fdff");
+        str=QString(tr("Normal"));
+        break;
+    case 2:
+        pen.setColor("#3e38ff");
+        str=QString(tr(" Hard "));
+        break;
+    case 3:
+        pen.setColor("#ff0a78");
+        str=QString(tr("Lunatic"));
+        break;
+    default:break;
+    }
+    painter.setPen(pen);
+    QPainterPath textPath;
+    textPath.addText(x,y,font,str);
+    painter.setBrush(linearGrad);
+    painter.drawPath(textPath);
 }
 
 
@@ -525,9 +557,9 @@ void Stage::QuitPress(){
     this->close();
 }
 
-void Stage::closeEvent(QCloseEvent *){
-    pw->close();
-    ew->close();
-    if(pw)delete pw;
-    if(ew)delete ew;
-}
+//void Stage::closeEvent(QCloseEvent *){
+//    pw->close();
+//    ew->close();
+//    if(pw)delete pw;
+//    if(ew)delete ew;
+//}
