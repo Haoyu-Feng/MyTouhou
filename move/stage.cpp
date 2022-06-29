@@ -1,4 +1,4 @@
-#include<stage.h>
+﻿#include<stage.h>
 #include<pausewindow.h>//.h里声明 .cpp里包含头文件
 #include<endwindow.h>//结束菜单
 
@@ -141,6 +141,8 @@ void Stage::updateAllPos(){
             }//assist射击
         }
     }
+
+
     for(auto it=enemies.begin();it!=enemies.end();++it){
         enemy &ys=*it;
         if(it->exist()){
