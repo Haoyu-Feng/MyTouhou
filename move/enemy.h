@@ -11,7 +11,7 @@ public:
     enemy();
     enemy_bullet e_b[MAX_SHOOT]={};
     void shoot();//有极大的改动空间！！！涉及更一般的射击造型
-    void shoot1();//同时发射多枚子弹
+    void shoot1();//圆形
     void shoot2(int xx,int yy);//瞄准，三角形
     void shoot3();//螺旋形
     int shoot_temp;

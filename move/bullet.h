@@ -13,8 +13,6 @@ public:
     int attack;//攻击力
     void move();
     void move(int xx,int yy);
-    void move(int k);//圆形
-    void move1(int k);//螺旋形
     //有极大的改动空间！！！还需研究更一般的轨迹运动
 };
 
