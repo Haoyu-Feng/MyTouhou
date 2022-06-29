@@ -1,0 +1,2 @@
+1.  flower_yousei  尝试了多态shoot 可以做到周期间隔散发
+2.  
